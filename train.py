@@ -136,7 +136,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=1e-4,
                         help='Learning rate for training')
 
-    parser.add_argument('--weight_decay', type=float, default=1e-3,
+    parser.add_argument('--weight_decay', type=float, default=1e-4,
                         help='Weight decay value for Adam optimizer')
 
 
@@ -168,12 +168,12 @@ if __name__ == "__main__":
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.5)
 
-    ds_train = load_dataset("timm/mini-imagenet", split="train")
+    ds_train = load_dataset("timm/mini-imagenet", split="train[0:1000]")
     ds_train = ds_train.remove_columns("label")
     ds_train.set_format(type="torch")
     print(f"Loaded dataset. {len(ds_train)} samples.")
 
-    ds_test = load_dataset("timm/mini-imagenet", split="test[0:10]")
+    ds_test = load_dataset("timm/mini-imagenet", split="test[0:100]")
     ds_test = ds_test.remove_columns("label")
     ds_test.set_format(type="torch")
 
