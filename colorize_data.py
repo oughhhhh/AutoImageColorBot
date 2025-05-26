@@ -24,11 +24,14 @@ class ColorizeData():
         input = input.transpose((1, 2, 0))
 
         img_lab = rgb2lab(input)
-        img_lab = (img_lab + 128) / 255 # Normalize the LAB values so that they are in the range of 0 to 1
-        img_ab = img_lab[:, :, 1:3]     # Get the "ab" channels from the LAB image
+        # Normalize the LAB values so that they are in the range of 0 to 1
+        img_lab = (img_lab + 128) / 255
+        # Get the "ab" channels from the LAB image
+        img_ab = img_lab[:, :, 1:3]
         img_ab = torch.from_numpy(img_ab.transpose((2, 0, 1))).float()
 
         input = rgb2gray(input)
         input = torch.from_numpy(input).unsqueeze(0).float()
 
-        return input, img_ab # Return the grayscale image and the "ab" channels as a tuple
+        # Return the grayscale image and the "ab" channels as a tuple
+        return input, img_ab

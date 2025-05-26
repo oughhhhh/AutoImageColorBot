@@ -173,7 +173,7 @@ if __name__ == "__main__":
     ds_train.set_format(type="torch")
     print(f"Loaded dataset. {len(ds_train)} samples.")
 
-    ds_test = load_dataset("timm/mini-imagenet", split="test[0:5]")
+    ds_test = load_dataset("timm/mini-imagenet", split="test[0:10]")
     ds_test = ds_test.remove_columns("label")
     ds_test.set_format(type="torch")
 
