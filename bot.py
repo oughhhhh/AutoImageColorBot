@@ -36,8 +36,7 @@ if __name__ == "__main__":
     TOKEN = os.getenv("BOT_TOKEN")
 
     # start backends
-    os.system("sudo docker run -d -p 5000:5000 --rm --name DDColor --gpus=all r8.im/piddnad/ddcolor@sha256:ca494ba129e44e45f661d6ece83c4c98a9a7c774309beca01429b58fce8aa695  ")
-
+    os.system("sudo nohup docker run -d -p 5000:5000 --rm --name DDColor --gpus=all r8.im/piddnad/ddcolor@sha256:ca494ba129e44e45f661d6ece83c4c98a9a7c774309beca01429b58fce8aa695 &")
 
     os.system("clear")
     print("Running bot...")
